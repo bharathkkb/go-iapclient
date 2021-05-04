@@ -267,7 +267,7 @@ func (iap *IAP) RoundTrip(req *http.Request) (resp *http.Response, err error) {
 		return nil, errors.Wrap(err, "failed to refresh auth")
 	}
 
-	req.Header.Set("Authorization", fmt.Sprintf("Bearer %v", iap.oidc))
+	req.Header.Set("Proxy-Authorization", fmt.Sprintf("Bearer %v", iap.oidc))
 
 	resp, err = iap.transport.RoundTrip(req)
 	return resp, err
